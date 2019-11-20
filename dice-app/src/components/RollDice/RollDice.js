@@ -14,11 +14,11 @@ class RollDice extends Component {
     }
 
     setDiceState(newDie1, newDie2) {
-        this.setState({
+        return {
             die1: newDie1,
             die2: newDie2,
             rolling: true
-        });
+        }
     } 
 
     rollDice() {
