@@ -9,18 +9,13 @@ class ColorBoxGrid extends Component {
         numBoxes: 16
     };
 
-    constructor(props){
-        super(props);
-        const colors = [];
-        for(let i=0; i< this.props.numBoxes; i++) {
-            colors.push('blue');
-        }
-        this.state = {colors};
-    };
-
     render(){
+        const boxes = Array.from({length:this.props.numBoxes}).map(
+            (el, index) => <ColorBox key={index}/>
+        );
+        
         return (<div className="ColorBoxGrid">
-            {this.state.colors.map(c => <ColorBox color={c}/>)}
+            {boxes}
         </div>)
     }
 }

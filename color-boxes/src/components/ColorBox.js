@@ -12,11 +12,15 @@ class ColorBox extends Component {
     }
 
     setRandomColor() {
-        return {color:generateRandomRgb()};
+        this.setState(st => {
+            return {
+                color: generateRandomRgb()
+            }
+        });
     }
 
-    handleClick(){
-        this.setState(this.setRandomColor);
+    handleClick(e){
+        this.setRandomColor();
     }
 
     render(){
