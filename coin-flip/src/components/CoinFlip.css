@@ -1,0 +1,19 @@
+.CoinFlip {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.CoinFlip button{
+    background-color: gainsboro;
+    box-shadow: 2px 2px;
+    border-radius: 25%;
+    width: 6em;
+    height: 4em;
+    border: 0em;
+}
+
+.CoinFlip button:hover{
+    background-color: ghostwhite;
+}
