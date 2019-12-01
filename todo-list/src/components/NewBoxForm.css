@@ -1,0 +1,11 @@
+.NewBoxForm {
+    padding: 2em;
+    text-decoration: none;
+}
+
+.NewBoxForm button {
+    background-color: inherit; 
+    color: white;
+    font-weight: bold;
+    margin: 0em 1em;
+}
