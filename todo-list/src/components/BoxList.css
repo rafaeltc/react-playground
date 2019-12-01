@@ -1,0 +1,16 @@
+.BoxList {
+    background-color: crimson;
+    height: 50%;
+    width: 30%;
+    margin: auto;
+    color: whitesmoke;
+    box-shadow: -0.5em -0.5em 0.5em firebrick;
+}
+
+.BoxList h1 {
+    text-shadow: 3px 2px saddlebrown;
+}
+
+.BoxList > h4 {
+    text-decoration: underline;
+}
