@@ -7,9 +7,7 @@ class BoxList extends Component {
 
     constructor(props) {
         super(props)
-        this.state = {
-            boxes:[]
-        }
+        this.state = {boxes:[]}
         this.remove = this.remove.bind(this);
         this.add = this.add.bind(this);
         this.edit = this.edit.bind(this);
@@ -31,7 +29,7 @@ class BoxList extends Component {
 
     edit(id) {
         this.setState(st => ({
-            boxes: st.boxes.map(box => ({...box, editable: box.id === id ? !box.editable : box.editable}))
+            boxes: st.boxes.map(box => ({...box, isEditable: box.id === id ? !box.isEditable : box.isEditable}))
         }));
     }
 
@@ -41,26 +39,40 @@ class BoxList extends Component {
         }));
     }
 
-    save(item) {
-
-        // const boxes = this.state.boxes;
-        // const updatedItem = boxes.filter(it => it.id === item.id);
-
+    save(id, text) {
+        console.log(`saving box ${id}:${text}`)
         this.setState(st => ({
-            boxes: st.boxes.map(box => (
-                {
-                    ...box, 
-                    editable: box.id === item.id ? !box.editable : box.editable,
-                    text: box.id === item.id ? item.text : box.text
-                }))
+            // boxes: st.boxes.map(box => (
+            //     {
+            //         ...box, 
+            //         isEditable: box.id === item.id ? !box.isEditable : box.isEditable,
+            //         text: box.id === item.id ? item.text : box.text
+            //     }))
+            boxes: st.boxes.map(box => {
+                console.log("box: ",box)
+                if(box.id === id) {
+                    const newBox = {
+                        ...box, 
+                        isEditable: false, 
+                        text: text + "_edited"
+                    };
+                    console.log("returning new box: ", newBox)
+                    return newBox;
+                }
+                console.log("returning old box")
+                return box;
+            })
         }));
     }
 
     render() {
         const boxes = this.state.boxes.map(
             box => <Box height="2em" width="95%" color="salmon"
-                        key={box.id} id={box.id} 
-                        text={box.text} strike={box.strike} editable={box.editable} 
+                        key={box.id} 
+                        id={box.id} 
+                        text={box.text} 
+                        strike={box.strike} 
+                        isEditable={box.isEditable} 
                         remove={this.remove} 
                         strikethrough={this.strikethrough}
                         save={this.save}

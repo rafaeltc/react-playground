@@ -2,7 +2,9 @@
     padding: 2em;
     text-decoration: none;
 }
-
+.NewBoxForm input {
+    margin: 0em 1em;
+}
 .NewBoxForm button {
     background-color: inherit; 
     color: white;

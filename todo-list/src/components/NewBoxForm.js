@@ -8,7 +8,7 @@ class NewBoxForm extends Component {
         this.state = {text:''}
         this.handleAdd = this.handleAdd.bind(this);
         this.handleChange = this.handleChange.bind(this);
-
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleAdd() {
@@ -18,16 +18,26 @@ class NewBoxForm extends Component {
         }
     }
 
+    handleSubmit(evt) {
+        evt.preventDefault();
+        this.props.add({...this.state, id:uuidv4()});
+        this.setState({text:""});
+    }
+
     handleChange(evt){
-        this.setState({text:evt.target.value});
+        this.setState({
+            [evt.target.name]: evt.target.value
+        })
     }
 
     render() {
-        return <div className='NewBoxForm'>
-            <h3>New Todo</h3>
-            <input placeholder="New Todo" onChange={this.handleChange} value={this.state.text}></input>
-            <button onClick={this.handleAdd}>ADD TODO</button>
-        </div>
+        return (
+            <form onSubmit={this.handleSubmit} className="NewBoxForm"> 
+                <label htmlFor="text">New Todo</label>
+                <input type="text" placeholder="New Todo" id="text" value={this.state.text} onChange={this.handleChange} name="text"/>
+                <button>Add Task</button>
+            </form>
+        )
     }
 }
 
